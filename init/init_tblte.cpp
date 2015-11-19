@@ -61,19 +61,26 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
 
     property_get("ro.bootloader", bootloader);
 
-    if (strstr(bootloader, "N910G")) {
-        /* trltedt These values are taken from trltexx and edited for the 910G FIXME */
-        property_set("ro.build.fingerprint", "samsung/trltedt/trlte:6.0/MRA58K/N910GDTU1ANK3:user/release-keys");
-        property_set("ro.build.description", "trltedt-user 6.0 MRA58K N910GDTU1ANK3 release-keys");
-        property_set("ro.product.model", "SM-N910G");
-        property_set("ro.product.device", "trlte");
+    if (strstr(bootloader, "N915FY")) {
+        /* tbltexx These values are taken from tbltexx and edited for the 915FY FIXME */
+        property_set("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0/MDB08M/N915FYXXU1BOC3:user/release-keys");
+        property_set("ro.build.description", "tbltebtu-user 6.0 MDB08M N915FYXXU1BOC3 release-keys");
+        property_set("ro.product.model", "SM-N915FY");
+        property_set("ro.product.device", "tbltexx");
         gsm_properties();
+    } else if (strstr(bootloader, "N915G")) {
+         /* tbltedt */
+-        property_set("ro.build.fingerprint", "samsung/tbltedt/tblte:6.0/MDB08M/N915GDTXXU1BOC6:user/release-keys");
+-        property_set("ro.build.description", "tbltedt-user 6.0 MDB08M N915GDTXXU1BOC6 release-keys");
+         property_set("ro.product.model", "SM-N915G");
+         property_set("ro.product.device", "tblte");
+         gsm_properties();
     } else {
-        /* trltexx */
-        property_set("ro.build.fingerprint", "samsung/trltexx/trltexx:6.0/MRA58K/N910TUVU1ANIH:user/release-keys");
-        property_set("ro.build.description", "trltexx-user 6.0 MRA58K N910TUVU1ANIH release-keys");
-        property_set("ro.product.model", "SM-N910F");
-        property_set("ro.product.device", "trltexx");
+        /* tblte */
+        property_set("ro.build.fingerprint", "samsung/tbltexx/tblte:6.0/MDB08M/N915FXXU1BOC6:user/release-keys");
+        property_set("ro.build.description", "tbltexx-user 6.0 MDB08M N915FXXU1BOC6 release-keys");
+        property_set("ro.product.model", "SM-N915F");
+        property_set("ro.product.device", "tblte");
         gsm_properties();
     }
 

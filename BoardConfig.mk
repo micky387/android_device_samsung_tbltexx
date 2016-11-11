@@ -32,8 +32,7 @@ TARGET_KERNEL_VARIANT_CONFIG := apq8084_sec_tblte_eur_defconfig
 TARGET_FIXUP_PREVIEW := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/samsung/tbltexx/init/init_tblte.cpp
+TARGET_INIT_VENDOR_LIB := libinit_tblte
 TARGET_UNIFIED_DEVICE := true
 
 # Radio

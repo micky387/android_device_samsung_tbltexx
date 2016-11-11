@@ -35,6 +35,7 @@ vendor/lib/libqmiservices.so
 
 # GPS
 priv-app/com.qualcomm.location/com.qualcomm.location.apk
+etc/permissions/com.qualcomm.location.xml
 
 # Radio
 bin/efsks

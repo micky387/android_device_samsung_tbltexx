@@ -5,5 +5,5 @@ ro.ril.telephony.mqanelements=6
 ro.telephony.ril_class=tblteRIL
 ro.debug_level=0x4948
 # Temporary:  REMOVE THIS FINGERPRINT LINE ONCE IT GETS BUILT IN
-ro.build.fingerprint=samsung/tbltexx/tblte:6.0/MDB08M/N915FXXU1COH2:user/release-keys
+ro.build.fingerprint=samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DPG1:user/release-keys
 

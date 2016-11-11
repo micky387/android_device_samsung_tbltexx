@@ -35,8 +35,5 @@ TARGET_FIXUP_PREVIEW := true
 TARGET_INIT_VENDOR_LIB := libinit_tblte
 TARGET_UNIFIED_DEVICE := true
 
-# Radio
-BOARD_RIL_CLASS := ../../../device/samsung/tbltexx/ril
-
 # inherit from the proprietary version
 -include vendor/samsung/tbltexx/BoardConfigVendor.mk

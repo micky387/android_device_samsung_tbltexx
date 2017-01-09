@@ -39,12 +39,6 @@
 
 #define ISMATCH(a,b) (!strncmp(a,b,PROP_VALUE_MAX))
 
-void gsm_properties()
-{
-    property_set("telephony.lteOnGsmDevice", "1");
-    property_set("ro.telephony.default_network", "9");
-}
-
 void init_variant_properties() {
     char platform[PROP_VALUE_MAX];
     char bootloader[PROP_VALUE_MAX];
@@ -64,21 +58,18 @@ void init_variant_properties() {
         property_set("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DPG1 release-keys");
         property_set("ro.product.model", "SM-N915FY");
         property_set("ro.product.device", "tbltexx");
-        gsm_properties();
     } else if (strstr(bootloader, "N915G")) {
          /* tbltedt */
          property_set("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DPG1:user/release-keys");
         property_set("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DPG1 release-keys");
          property_set("ro.product.model", "SM-N915G");
          property_set("ro.product.device", "tbltedt");
-         gsm_properties();
     } else {
         /* tblte */
         property_set("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DPG1:user/release-keys");
         property_set("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DPG1 release-keys");
         property_set("ro.product.model", "SM-N915F");
         property_set("ro.product.device", "tblte");
-        gsm_properties();
     }
 
     property_get("ro.product.device", device, NULL);

@@ -24,3 +24,7 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 PRODUCT_DEVICE := tbltexx
 PRODUCT_NAME := cm_tbltexx
+
+LOCAL_PATH := device/samsung/tbltexx
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab

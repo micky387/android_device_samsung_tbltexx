@@ -23,7 +23,7 @@ $(call inherit-product, device/samsung/tbltexx/full_tbltexx.mk)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 PRODUCT_DEVICE := tbltexx
-PRODUCT_NAME := cm_tbltexx
+PRODUCT_NAME := lineage_tbltexx
 
 LOCAL_PATH := device/samsung/tbltexx
 PRODUCT_COPY_FILES += \

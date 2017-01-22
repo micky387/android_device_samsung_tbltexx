@@ -37,8 +37,6 @@
 #include "util.h"
 #include <sys/system_properties.h>
 
-#define ISMATCH(a,b) (!strncmp(a,b,PROP_VALUE_MAX))
-
 void init_variant_properties() {
     char platform[PROP_VALUE_MAX];
     char bootloader[PROP_VALUE_MAX];
@@ -47,7 +45,7 @@ void init_variant_properties() {
     int rc;
 
     rc = property_get("ro.board.platform", platform, NULL);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
+    if (!rc || strncmp(platform, ANDROID_TARGET, PROP_VALUE_MAX))
         return;
 
     property_get("ro.bootloader", bootloader, NULL);;
@@ -74,9 +72,5 @@ void init_variant_properties() {
 
     property_get("ro.product.device", device, NULL);
     strlcpy(devicename, device, sizeof(devicename));
-INFO("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
-}
-
-void vendor_load_properties() {
-    init_variant_properties();
+    ERROR("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
 }

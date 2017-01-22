@@ -40,6 +40,7 @@ TARGET_UNIFIED_DEVICE := true
 -include vendor/samsung/tbltexx/BoardConfigVendor.mk
 
 #TWRP specific build flags
+TW_IGNORE_MISC_WIPE_DATA := true
 TW_THEME := portrait_hdpi
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 255

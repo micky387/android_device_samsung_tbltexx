@@ -38,9 +38,10 @@ TARGET_UNIFIED_DEVICE := true
 -include vendor/samsung/tbltexx/BoardConfigVendor.mk
 
 #TWRP specific build flags
-TW_IGNORE_MISC_WIPE_DATA := true
+TW_DEVICE_VERSION := by micky387
 TW_THEME := portrait_hdpi
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/f9200000.ssusb/f9200000.dwc3/gadget/lun%d/file"
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 140
 RECOVERY_SDCARD_ON_DATA := true
@@ -59,5 +60,4 @@ TW_EXCLUDE_SUPERSU := true
 TWRP_INCLUDE_LOGCAT := true
 TW_INCLUDE_JPEG := true
 TW_TARGET_USES_QCOM_BSP := false
-TW_USE_TOOLBOX := true
-TWHAVE_SELINUX := true
+TARGET_USES_LOGD := true

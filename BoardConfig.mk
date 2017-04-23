@@ -38,28 +38,3 @@ TARGET_UNIFIED_DEVICE := true
 
 # inherit from the proprietary version
 -include vendor/samsung/tbltexx/BoardConfigVendor.mk
-
-#TWRP specific build flags
-TW_DEVICE_VERSION := by micky387
-TW_THEME := portrait_hdpi
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/f9200000.ssusb/f9200000.dwc3/gadget/lun%d/file"
-TW_MAX_BRIGHTNESS := 255
-TW_DEFAULT_BRIGHTNESS := 140
-RECOVERY_SDCARD_ON_DATA := true
-BOARD_HAS_NO_REAL_SDCARD := true
-RECOVERY_GRAPHICS_FORCE_USE_LINELENGTH := true
-TW_INTERNAL_STORAGE_PATH := "/data/media/0"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TW_NO_REBOOT_BOOTLOADER := true
-TW_HAS_DOWNLOAD_MODE := true
-TW_NO_EXFAT_FUSE := true
-TW_NO_EXFAT := true
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_EXCLUDE_SUPERSU := true
-TWRP_INCLUDE_LOGCAT := true
-TW_INCLUDE_JPEG := true
-TW_TARGET_USES_QCOM_BSP := false
-TARGET_USES_LOGD := true

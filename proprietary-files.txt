@@ -40,10 +40,8 @@ bin/mdm_helper_proxy
 bin/netmgrd
 bin/qcks
 bin/qmuxd
-bin/rild
 bin/rmnetcli
 lib/libreference-ril.so
-lib/libril.so
 lib/librmnetctl.so
 lib/libsec-ril.so
 lib/libsecnativefeature.so

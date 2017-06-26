@@ -35,7 +35,6 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_tblte
-TARGET_UNIFIED_DEVICE := true
 
 # inherit from the proprietary version
 -include vendor/samsung/tbltexx/BoardConfigVendor.mk

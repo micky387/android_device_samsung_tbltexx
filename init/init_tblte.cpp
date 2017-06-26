@@ -39,6 +39,17 @@
 
 #define ISMATCH(a,b) (!strncmp(a,b,PROP_VALUE_MAX))
 
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
 void init_variant_properties() {
     char platform[PROP_VALUE_MAX];
     char bootloader[PROP_VALUE_MAX];
@@ -54,22 +65,22 @@ void init_variant_properties() {
 
     if (strstr(bootloader, "N915FY")) {
         /* tbltexx These values are taken from tbltexx and edited for the 915FY FIXME */
-        property_set("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DPG1:user/release-keys");
-        property_set("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DPG1 release-keys");
-        property_set("ro.product.model", "SM-N915FY");
-        property_set("ro.product.device", "tbltexx");
+        property_override("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DPG1:user/release-keys");
+        property_override("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DPG1 release-keys");
+        property_override("ro.product.model", "SM-N915FY");
+        property_override("ro.product.device", "tbltexx");
     } else if (strstr(bootloader, "N915G")) {
          /* tbltedt */
-         property_set("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DPG1:user/release-keys");
-        property_set("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DPG1 release-keys");
-         property_set("ro.product.model", "SM-N915G");
-         property_set("ro.product.device", "tbltedt");
+        property_override("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DPG1:user/release-keys");
+        property_override("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DPG1 release-keys");
+        property_override("ro.product.model", "SM-N915G");
+        property_override("ro.product.device", "tbltedt");
     } else {
         /* tblte */
-        property_set("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DPG1:user/release-keys");
-        property_set("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DPG1 release-keys");
-        property_set("ro.product.model", "SM-N915F");
-        property_set("ro.product.device", "tblte");
+        property_override("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DPG1:user/release-keys");
+        property_override("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DPG1 release-keys");
+        property_override("ro.product.model", "SM-N915F");
+        property_override("ro.product.device", "tblte");
     }
 
     property_get("ro.product.device", device, NULL);

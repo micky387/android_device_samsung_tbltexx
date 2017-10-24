@@ -27,17 +27,28 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <fcntl.h>
+#include "log.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
-
-#include "vendor_init.h"
-#include <cutils/properties.h>
-#include "log.h"
 #include "util.h"
-#include <sys/system_properties.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/sysinfo.h>
 
-#define ISMATCH(a,b) (!strncmp(a,b,PROP_VALUE_MAX))
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
+#include <android-base/file.h>
+#include <android-base/properties.h>
+#include <android-base/strings.h>
+
+#include "property_service.h"
+#include "vendor_init.h"
+
+using android::base::GetProperty;
+using android::base::ReadFileToString;
+using android::base::Trim;
 
 void property_override(char const prop[], char const value[])
 {
@@ -51,25 +62,20 @@ void property_override(char const prop[], char const value[])
 }
 
 void init_variant_properties() {
-    char platform[PROP_VALUE_MAX];
-    char bootloader[PROP_VALUE_MAX];
-    char device[PROP_VALUE_MAX];
-    char devicename[PROP_VALUE_MAX];
-    int rc;
 
-    rc = property_get("ro.board.platform", platform, NULL);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
-    return;
+    std::string platform = GetProperty("ro.board.platform", "");
+    if (platform != ANDROID_TARGET)
+        return;
 
-    property_get("ro.bootloader", bootloader, NULL);;
+    std::string bootloader = GetProperty("ro.bootloader", "");
 
-    if (strstr(bootloader, "N915FY")) {
+    if (bootloader.find("N915FY") == 0) {
         /* tbltexx These values are taken from tbltexx and edited for the 915FY FIXME */
         property_override("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DQH2:user/release-keys");
         property_override("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DQH2 release-keys");
         property_override("ro.product.model", "SM-N915FY");
         property_override("ro.product.device", "tbltexx");
-    } else if (strstr(bootloader, "N915G")) {
+    } else if (bootloader.find("N915G") == 0) {
          /* tbltedt */
         property_override("ro.build.fingerprint", "samsung/tbltebtu/tblte:6.0.1/MMB29M/N915FYXXS1DQH2:user/release-keys");
         property_override("ro.build.description", "tbltebtu-user 6.0.1 MMB29M N915FYXXS1DQH2 release-keys");
@@ -83,9 +89,8 @@ void init_variant_properties() {
         property_override("ro.product.device", "tblte");
     }
 
-    property_get("ro.product.device", device, NULL);
-    strlcpy(devicename, device, sizeof(devicename));
-    ERROR("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
+    std::string device = GetProperty("ro.product.device", "");
+    LOG(INFO) << "Found bootloader id " << bootloader.c_str() << " setting build properties for " << device.c_str() << " device\n";
 }
 
 void vendor_load_properties() {

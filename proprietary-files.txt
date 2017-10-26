@@ -32,10 +32,6 @@ vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
-# GPS
-priv-app/com.qualcomm.location/com.qualcomm.location.apk
-etc/permissions/com.qualcomm.location.xml
-
 # Radio
 bin/efsks
 bin/ks

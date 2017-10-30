@@ -1,14 +1,2 @@
 # Radio
-bin/efsks
-bin/ks
-bin/mdm_helper
-bin/mdm_helper_proxy
-bin/netmgrd
-bin/qcks
-bin/qmuxd
-bin/rmnetcli
-lib/librmnetctl.so
 lib/libsec-ril.so
-vendor/lib/libril-qcril-hook-oem.so
-vendor/lib/libconfigdb.so
-vendor/lib/libxml.so

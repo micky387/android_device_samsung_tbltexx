@@ -7,11 +7,8 @@ bin/netmgrd
 bin/qcks
 bin/qmuxd
 bin/rmnetcli
-lib/libreference-ril.so
 lib/librmnetctl.so
 lib/libsec-ril.so
-lib/libsecnativefeature.so
-lib/libsecril-client.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/libconfigdb.so
 vendor/lib/libxml.so
